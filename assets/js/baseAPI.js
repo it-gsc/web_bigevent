@@ -5,7 +5,6 @@ $.ajaxPrefilter(function(options) {
         options.headers = {
             Authorization: localStorage.getItem('token') || ''
         }
-        console.log('111');
         options.complete = function(res) {
             // console.log('执行了 complete 回调：')
             // console.log(res)
@@ -13,7 +12,6 @@ $.ajaxPrefilter(function(options) {
             if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
                 // 1. 强制清空 token
                 localStorage.removeItem('token');
-                console.log('111');
                 // 2. 强制跳转到登录页面
                 location.href = './login.html';
             }
